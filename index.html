@@ -750,14 +750,6 @@
           giftModal.classList.remove("show");
         });
 
-
-        // Tutup manual via tombol close
-       giftClose.addEventListener("click", (e) => {
-          e.stopPropagation();
-          giftModal.classList.remove("show");
-        });
-
-
         // 💳 Efek flip kartu
         document.querySelectorAll(".atm-card").forEach((card) => {
           card.addEventListener("click", () => {
@@ -903,13 +895,13 @@
               msgList.appendChild(toggleBtn);
             }
           };
-if (guestName) {
-  const guestInput = document.getElementById("guestName");
-  const attendeeInput = document.getElementById("attendeeName");
-
-  if (guestInput) guestInput.value = guestName;
-  if (attendeeInput) attendeeInput.value = guestName;
-}
+          if (guestName) {
+            const guestInput = document.getElementById("guestName");
+            const attendeeInput = document.getElementById("attendeeName");
+          
+            if (guestInput) guestInput.value = guestName;
+            if (attendeeInput) attendeeInput.value = guestName;
+          }
 
           // render awal (hanya 5 ucapan)
           renderMessages();
@@ -961,6 +953,7 @@ if (guestName) {
     </script>
   </body>
 </html>
+
 
 
 
