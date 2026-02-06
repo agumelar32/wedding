@@ -731,7 +731,7 @@
           }
 
           // Khusus Home, pastikan ke atas penuh
-          if (targetId === "home") {
+          if (targetId === "header") {
             window.scrollTo({ top: 0, behavior: "smooth" });
           }
         });
@@ -746,16 +746,17 @@
 
         // Tutup modal jika klik di luar area
         giftClose.addEventListener("click", (e) => {
-  e.stopPropagation();
-  giftModal.classList.remove("show");
-});
-
-
-        // Tutup manual via tombol close
-        closeModal.addEventListener("click", (e) => {
           e.stopPropagation();
           giftModal.classList.remove("show");
         });
+
+
+        // Tutup manual via tombol close
+       giftClose.addEventListener("click", (e) => {
+          e.stopPropagation();
+          giftModal.classList.remove("show");
+        });
+
 
         // 💳 Efek flip kartu
         document.querySelectorAll(".atm-card").forEach((card) => {
@@ -960,6 +961,7 @@ if (guestName) {
     </script>
   </body>
 </html>
+
 
 
 
