@@ -447,7 +447,7 @@ main {
 
 /* ========== Quran Section ========== */
 #quranSection {
-  background: url(/assets/img/ayatsuci.jpg);
+  background: url("../assets/img/ayatsuci.jpg");
   background-position: center 30%;
   background-repeat: no-repeat;
   background-size: cover;
@@ -518,13 +518,13 @@ main {
 }
 
 .couple .person-box .photo-placeholder.men {
-  background: url(/assets/img/agung.jpg);
+  background: url("../assets/img/agung.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 .couple .person-box .photo-placeholder.women {
-  background: url(/assets/img/nofi.jpg);
+  background: url("../assets/img/nofi.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -1478,5 +1478,6 @@ img {
 .gallery-item img:hover {
   transform: scale(1.05);
 }
+
 
 
