@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta
       property="og:image"
-      content="https://agumelar32.github.io/wedding/assets/img/link.png"
+      content="https://agumelar32.github.io/agung-nofita/assets/img/link.png"
     />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="description" content="The Wedding of Agung & Nofita" />
@@ -393,7 +393,7 @@
                   </div>
                   <div class="card-back">
                     <p class="card-number">6102 0102 0724 531</p>
-                    <button class="copy-btn" data-rek="610201020724531">
+                    <button class="copy-btn" data-rek="1234567890">
                       Salin Nomor
                     </button>
                   </div>
@@ -414,7 +414,7 @@
                 </div>
                 <div class="card-back">
                   <p class="card-number">1622 7295 8577</p>
-                  <button class="copy-btn" data-rek="162272958577">
+                  <button class="copy-btn" data-rek="9876543210">
                     Salin Nomor
                   </button>
                 </div>
@@ -468,28 +468,28 @@
     </main>
 
     <script>
-  const galleryItems = document.querySelectorAll(".gallery-item img");
-  const galleryModal = document.getElementById("galleryModal");
-  const modalImg = document.getElementById("modalImg");
-  const galleryClose = document.querySelector("#galleryModal .close-modal");
+      const galleryItems = document.querySelectorAll(".gallery-item img");
+      const galleryModal = document.getElementById("galleryModal");
+      const modalImg = document.getElementById("modalImg");
+      const galleryClose = document.querySelector("#galleryModal .close-modal");
 
-  galleryItems.forEach((img) => {
-    img.addEventListener("click", () => {
-      galleryModal.classList.add("active");
-      modalImg.src = img.src;
-    });
-  });
+      galleryItems.forEach((img) => {
+        img.addEventListener("click", () => {
+          galleryModal.classList.add("active");
+          modalImg.src = img.src;
+        });
+      });
 
-  galleryClose.addEventListener("click", () => {
-    galleryModal.classList.remove("active");
-  });
+      galleryClose.addEventListener("click", () => {
+        galleryModal.classList.remove("active");
+      });
 
-  galleryModal.addEventListener("click", (e) => {
-    if (e.target === galleryModal) {
-      galleryModal.classList.remove("active");
-    }
-  });
-</script>
+      galleryModal.addEventListener("click", (e) => {
+        if (e.target === galleryModal) {
+          galleryModal.classList.remove("active");
+        }
+      });
+    </script>
 
     <!-- GSAP -->
     <script
@@ -512,6 +512,7 @@
       src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"
       defer
     ></script>
+
     <!--welcome screen-->
     <script>
       const slides = document.querySelectorAll(".cover-slider .slide");
@@ -731,89 +732,50 @@
           }
 
           // Khusus Home, pastikan ke atas penuh
-          if (targetId === "header") {
+          if (targetId === "home") {
             window.scrollTo({ top: 0, behavior: "smooth" });
           }
         });
       });
-      // 🎁 GIFT MODAL — FINAL CLEAN VERSION
-const giftBtn = document.getElementById("giftBtn");
-const giftModal = document.getElementById("giftModal");
-const giftContent = document.querySelector(".gift-modal-content");
-const giftClose = document.querySelector("#giftModal .close-modal");
 
-let isGiftOpen = false;
+      // Gift Modal
 
-const openGift = () => {
-  giftModal.classList.add("show");
-  giftModal.style.maxHeight = "0";
-  giftModal.style.opacity = "0";
+      document.addEventListener("DOMContentLoaded", () => {
+        const giftBtn = document.getElementById("giftBtn");
+        const giftModal = document.getElementById("giftModal");
+        const closeModal = document.querySelector(".close-modal");
 
-  requestAnimationFrame(() => {
-    giftModal.style.maxHeight = giftModal.scrollHeight + "px";
-    giftModal.style.opacity = "1";
-  });
+        // Tutup modal jika klik di luar area
+        document.addEventListener("click", (e) => {
+          if (!giftModal.contains(e.target) && e.target !== giftBtn) {
+            giftModal.classList.remove("show");
+          }
+        });
 
-  isGiftOpen = true;
-};
+        // Tutup manual via tombol close
+        closeModal.addEventListener("click", (e) => {
+          e.stopPropagation();
+          giftModal.classList.remove("show");
+        });
 
-const closeGift = () => {
-  giftModal.style.maxHeight = giftModal.scrollHeight + "px";
+        // 💳 Efek flip kartu
+        document.querySelectorAll(".atm-card").forEach((card) => {
+          card.addEventListener("click", () => {
+            card.classList.toggle("flipped");
+          });
+        });
 
-  requestAnimationFrame(() => {
-    giftModal.style.maxHeight = "0";
-    giftModal.style.opacity = "0";
-  });
-
-  giftModal.addEventListener(
-    "transitionend",
-    () => {
-      giftModal.classList.remove("show");
-      giftModal.style.maxHeight = "";
-    },
-    { once: true }
-  );
-
-  isGiftOpen = false;
-};
-
-// Toggle open / close
-giftBtn.addEventListener("click", (e) => {
-  e.stopPropagation();
-  isGiftOpen ? closeGift() : openGift();
-});
-
-// Close button ❌
-giftClose.addEventListener("click", (e) => {
-  e.stopPropagation();
-  closeGift();
-});
-
-// Klik di luar konten → tutup
-giftModal.addEventListener("click", (e) => {
-  if (!giftContent.contains(e.target)) {
-    closeGift();
-  }
-});
-
-// 💳 Flip kartu
-document.querySelectorAll(".atm-card").forEach((card) => {
-  card.addEventListener("click", () => {
-    card.classList.toggle("flipped");
-  });
-});
-
-// 📋 Copy rekening
-document.querySelectorAll(".copy-btn").forEach((btn) => {
-  btn.addEventListener("click", (e) => {
-    e.stopPropagation();
-    const rek = btn.dataset.rek;
-    navigator.clipboard.writeText(rek);
-    btn.textContent = "Disalin!";
-    setTimeout(() => (btn.textContent = "Salin Nomor"), 2000);
-  });
-});
-
+        // 📋 Salin nomor rekening
+        document.querySelectorAll(".copy-btn").forEach((btn) => {
+          btn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            const rek = btn.dataset.rek;
+            navigator.clipboard.writeText(rek);
+            btn.textContent = "Disalin!";
+            setTimeout(() => (btn.textContent = "Salin Nomor"), 2000);
+          });
+        });
+      });
     </script>
     <!-- 🔥 Firebase Script -->
     <script type="module">
@@ -944,7 +906,7 @@ document.querySelectorAll(".copy-btn").forEach((btn) => {
           if (guestName) {
             const guestInput = document.getElementById("guestName");
             const attendeeInput = document.getElementById("attendeeName");
-          
+
             if (guestInput) guestInput.value = guestName;
             if (attendeeInput) attendeeInput.value = guestName;
           }
@@ -999,14 +961,3 @@ document.querySelectorAll(".copy-btn").forEach((btn) => {
     </script>
   </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
