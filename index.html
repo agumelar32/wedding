@@ -468,28 +468,28 @@
     </main>
 
     <script>
-      const galleryItems = document.querySelectorAll(".gallery-item img");
-      const modal = document.getElementById("galleryModal");
-      const modalImg = document.getElementById("modalImg");
-      const closeModal = document.querySelector(".close-modal");
+  const galleryItems = document.querySelectorAll(".gallery-item img");
+  const galleryModal = document.getElementById("galleryModal");
+  const modalImg = document.getElementById("modalImg");
+  const galleryClose = document.querySelector("#galleryModal .close-modal");
 
-      galleryItems.forEach((img) => {
-        img.addEventListener("click", () => {
-          modal.classList.add("active");
-          modalImg.src = img.src;
-        });
-      });
+  galleryItems.forEach((img) => {
+    img.addEventListener("click", () => {
+      galleryModal.classList.add("active");
+      modalImg.src = img.src;
+    });
+  });
 
-      closeModal.addEventListener("click", () => {
-        modal.classList.remove("active");
-      });
+  galleryClose.addEventListener("click", () => {
+    galleryModal.classList.remove("active");
+  });
 
-      modal.addEventListener("click", (e) => {
-        if (e.target === modal) {
-          modal.classList.remove("active");
-        }
-      });
-    </script>
+  galleryModal.addEventListener("click", (e) => {
+    if (e.target === galleryModal) {
+      galleryModal.classList.remove("active");
+    }
+  });
+</script>
 
     <!-- GSAP -->
     <script
@@ -557,7 +557,7 @@
     </nav>
 
     <!--music-->
-    <audio id="bgMusic" src="/wedding/assets/music/wedding.mp3" loop></audio>
+    <audio id="bgMusic" src="./assets/music/wedding.mp3" loop></audio>
     <!-- Tombol Musik -->
     <div id="musicControl" class="music-btn" style="display: none">
       <ion-icon name="pause-circle"></ion-icon>
@@ -598,7 +598,7 @@
       });
 
       // Countdown
-      const weddingDate = new Date("Mar 27, 2026 08:00:00").getTime();
+      const weddingDate = new Date("Mar 27, 2026 10:00:00").getTime();
       const countdownElement = document.getElementById("countdownd");
       const countdown = setInterval(() => {
         const now = new Date().getTime();
@@ -701,7 +701,7 @@
         });
 
         // fallback: kalau di paling atas, aktifkan Home
-        if (scrollY < 100) current = "home";
+        if (scrollY < 100) current = "header";
 
         navLinks.forEach((link) => {
           link.classList.remove("active");
@@ -929,6 +929,13 @@
               msgList.appendChild(toggleBtn);
             }
           };
+if (guestName) {
+  const guestInput = document.getElementById("guestName");
+  const attendeeInput = document.getElementById("attendeeName");
+
+  if (guestInput) guestInput.value = guestName;
+  if (attendeeInput) attendeeInput.value = guestName;
+}
 
           // render awal (hanya 5 ucapan)
           renderMessages();
@@ -980,6 +987,7 @@
     </script>
   </body>
 </html>
+
 
 
 
