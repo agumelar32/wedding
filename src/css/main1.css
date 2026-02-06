@@ -447,7 +447,7 @@ main {
 
 /* ========== Quran Section ========== */
 #quranSection {
-  background: url("../../assets/img/ayatsuci.jpg");
+  background: url(/assets/img/ayatsuci.jpg);
   background-position: center 30%;
   background-repeat: no-repeat;
   background-size: cover;
@@ -865,21 +865,22 @@ main {
 
 .gift-modal {
   display: none;
-  position: fixed; /* fixed agar selalu di viewport */
-  inset: 0; /* top:0; left:0; bottom:0; right:0 */
-  background: rgba(0,0,0,0.5); /* overlay gelap */
-  z-index: 9999;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  position: absolute;
+  top: 70px; /* muncul di bawah tombol */
+  right: 50%;
+  transform: translateX(50%);
+  background: transparent;
+  z-index: 999;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.4s ease;
+  transition: all 0.4s cubic-bezier(0.4, 0.2, 0.3, 1);
 }
 
 .gift-modal.show {
+  display: block;
   opacity: 1;
   pointer-events: auto;
+  transform: translateX(50%) translateY(5px);
 }
 
 .gift-modal-content {
@@ -893,14 +894,20 @@ main {
   width: 320px;
   text-align: center;
   backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  box-shadow:
+    0 4px 30px rgba(255, 255, 255, 0.25),
+    inset 0 0 20px rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.25);
   position: relative;
-  transform: scale(0.95);
+  overflow: hidden;
+  transform: translateY(20px) scale(0.95);
   opacity: 0;
   transition: all 0.4s ease;
 }
 
 .gift-modal.show .gift-modal-content {
-  transform: scale(1);
+  transform: translateY(0) scale(1);
   opacity: 1;
 }
 
@@ -1471,9 +1478,3 @@ img {
 .gallery-item img:hover {
   transform: scale(1.05);
 }
-
-
-
-
-
-
