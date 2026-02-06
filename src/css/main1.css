@@ -242,7 +242,7 @@ body {
 
 /* ========== Header ========== */
 main {
-  background: url(/assets/img/background.png);
+  background: url(../assets/img/background.png);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -1478,3 +1478,4 @@ img {
 .gallery-item img:hover {
   transform: scale(1.05);
 }
+
