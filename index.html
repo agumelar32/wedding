@@ -1,0 +1,982 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      property="og:image"
+      content="https://agumelar32.github.io/agung-nofita/assets/img/link.png"
+    />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="The Wedding of Agung & Nofita" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <link
+      rel="shortcut icon"
+      href="./assets/img/favicon.ico"
+      type="image/x-icon"
+    />
+    <link rel="icon" href="./assets/img/favicon.ico" type="image/x-icon" />
+    <title>Agung & Nofita | Wedding Invitation</title>
+    <link rel="stylesheet" href="./src/css/main1.css" />
+
+    <!-- <link rel="stylesheet" href="./assets/css/style-mobile.css" /> -->
+
+    <!-- swiper js -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"
+    />
+
+    <!-- aos -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+    />
+
+    <style>
+      /* Fade-slide animation */
+      .fade-slide {
+        opacity: 0;
+        transform: translateY(30px);
+        transition:
+          opacity 0.8s ease,
+          transform 0.8s ease;
+      }
+      .fade-slide.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Tombol Musik */
+      .music-btn {
+        position: fixed;
+        bottom: 80px;
+        right: 20px;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+        z-index: 1000;
+        backdrop-filter: blur(10px);
+        transition:
+          transform 0.3s ease,
+          background 0.3s ease;
+      }
+
+      .music-btn ion-icon {
+        font-size: 2.2rem;
+        color: #a9bbc6;
+        transition: transform 0.3s ease;
+      }
+
+      .music-btn:hover {
+        background: rgba(51, 189, 214, 0.15);
+        transform: scale(1.1);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- welcome screen -->
+    <div id="cover">
+      <!-- SLIDER BACKGROUND -->
+      <div class="cover-slider">
+        <img src="./assets/img/destop.jpg" class="slide active" />
+        <img src="./assets/img/2.jpg" class="slide" />
+        <img src="./assets/img/3.jpg" class="slide" />
+        <img src="./assets/img/1.jpg" class="slide" />
+      </div>
+      <div id="petals"></div>
+
+      <!-- bunga -->
+      <div class="bunga">
+        <img
+          class="bunga1"
+          src="./assets/img/bunga1.png"
+          alt="Bunga dekorasi 1"
+        />
+        <img
+          class="bunga2"
+          src="./assets/img/bunga2.png"
+          alt="Bunga dekorasi 2"
+        />
+      </div>
+
+      <!-- teks cover -->
+      <div class="cover_text">
+        <div class="text">
+          <h3>The Wedding Of</h3>
+          <div class="mempelai">
+            <h1>Agung</h1>
+            <h1>&</h1>
+            <h1>Nofita</h1>
+          </div>
+        </div>
+
+        <div class="tamu">
+          <div class="text">
+            <p>Kepada Yth.</p>
+            <p>Bapak/Ibu/Saudara/i</p>
+          </div>
+          <div class="buka_undangan" style="cursor: pointer">
+            <ion-icon name="mail-open-outline"></ion-icon>
+            <span>Open Invitation</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- main content -->
+    <main id="mainContent" style="display: none">
+      <!-- header -->
+      <div id="header">
+        <img src="./assets/img/bunga3.png" alt="Dekorasi bunga" />
+        <p class="A">The Wedding Of</p>
+        <div class="header_couple">
+          <img src="./assets/img/bunga_spacing.png" alt="Bunga pemisah" />
+          <h1 class="couple-name">Agung</h1>
+          <h1 class="couple-name">&</h1>
+          <h1 class="couple-name">Nofita</h1>
+        </div>
+        <div class="date">
+          <p class="title">Save the Date</p>
+          <div id="countdownd">
+            <div class="timer">
+              <p class="hari">0</p>
+              <span class="small_text">days</span>
+            </div>
+            <div class="timer">
+              <p class="jam">0</p>
+              <span class="small_text">hours</span>
+            </div>
+            <div class="timer">
+              <p class="menit">0</p>
+              <span class="small_text">minutes</span>
+            </div>
+            <div class="timer">
+              <p class="detik">0</p>
+              <span class="small_text">seconds</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Quran Section -->
+      <section
+        id="quranSection"
+        class="section"
+        style="
+          position: relative;
+          padding: 50px 20px;
+          text-align: center;
+          overflow: hidden;
+        "
+      >
+        <!-- Konten Quran -->
+        <div
+          style="
+            position: relative;
+            z-index: 1;
+            animation: fadeIn 2s ease-in-out;
+          "
+        >
+          <h2 class="section-title">We Found Love</h2>
+
+          <p class="arab">
+            وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا
+            لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً ۚ
+            إِنَّ فِي ذَٰلِكَ لَآيَاتٍ لِّقَوْمٍ يَتَفَكَّرُونَ
+          </p>
+
+          <p class="latin">
+            "Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan
+            untukmu pasangan-pasangan dari jenismu sendiri, agar kamu merasa
+            tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan
+            sayang. Sesungguhnya pada yang demikian itu benar-benar terdapat
+            tanda-tanda bagi kaum yang berpikir." <br />
+            <strong>(QS. Ar-Rum: 21)</strong>
+          </p>
+        </div>
+      </section>
+
+      <!-- Animasi sederhana -->
+      <style>
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+      </style>
+
+      <!-- couple section -->
+      <section id="coupleSection" class="couple">
+        <h2>Our Wedding Couple</h2>
+        <div class="person-box">
+          <div class="photo-placeholder men"></div>
+          <h1 class="name">Agung Dwi Cahyono</h1>
+          <p class="sub-text">Putra dari: Bapak Matrasid & Ibu Sri Utami</p>
+          <a
+            class="instagram"
+            href="https://www.instagram.com/a_dc___?igsh=MWJ4N3puZmJjaG5jbQ=="
+            ><ion-icon name="logo-instagram"></ion-icon
+          ></a>
+        </div>
+
+        <div class="divider">&</div>
+
+        <div class="person-box">
+          <div class="photo-placeholder women"></div>
+          <h1 class="name">Nofita Hidayati</h1>
+          <p class="sub-text">
+            Putri dari: Bapak Jufri & Ibu Halimatus Sakdiah
+          </p>
+          <a
+            class="instagram"
+            href="https://www.instagram.com/fietanofita.mua?igsh=d2ZlNHZ0cG53MG93&utm_source=qr"
+            ><ion-icon name="logo-instagram"></ion-icon
+          ></a>
+        </div>
+      </section>
+      <!-- wedding event section -->
+      <section id="weddingEvent" class="section">
+        <div class="container">
+          <h2 class="section-title">Wedding Event</h2>
+          <div class="event-cards">
+            <!-- Akad Nikah -->
+            <div class="event-card">
+              <h3>Akad Nikah</h3>
+              <p class="event-date">27 March 2026, 10:00 AM</p>
+              <p class="event-location">
+                Eunoia Event Hall Cyberjaya<br />
+                The Place Cyberjaya
+              </p>
+              <div class="map-box">
+                <a
+                  href="https://maps.app.goo.gl/rMHzCyVKvRkuqkcV9?g_st=iw"
+                  target="_blank"
+                  class="map-btn"
+                >
+                  <ion-icon name="location-outline"></ion-icon>
+                  Google Map
+                </a>
+              </div>
+            </div>
+
+            <!-- Resepsi -->
+            <div class="event-card">
+              <h3>Resepsi</h3>
+              <p class="event-date">27 March 2026, 12:00 PM</p>
+              <p class="event-location">
+                Eunoia Event Hall Cyberjaya<br />
+                The Place Cyberjaya
+              </p>
+              <div class="map-box">
+                <a
+                  href="https://maps.app.goo.gl/rMHzCyVKvRkuqkcV9?g_st=iw"
+                  target="_blank"
+                  class="map-btn"
+                >
+                  <ion-icon name="location-outline"></ion-icon>
+                  Google Map
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 💐 Gallery -->
+      <section id="gallerySection" class="section">
+        <h2 class="section-title">GALERI<br />KAMI</h2>
+        <div class="gallery-grid">
+          <div class="gallery-item">
+            <img src="./assets/img/1.jpg" alt="Gallery 1" />
+          </div>
+          <div class="gallery-item">
+            <img src="./assets/img/2.jpg" alt="Gallery 2" />
+          </div>
+          <div class="gallery-item">
+            <img src="./assets/img/3.jpg" alt="Gallery 3" />
+          </div>
+          <div class="gallery-item">
+            <img src="./assets/img/4.jpg" alt="Gallery 4" />
+          </div>
+          <div class="gallery-item">
+            <img src="./assets/img/5.jpg" alt="Gallery 5" />
+          </div>
+          <div class="gallery-item">
+            <img src="./assets/img/6.jpg" alt="Gallery 6" />
+          </div>
+        </div>
+        <!-- Modal Fullscreen -->
+        <div id="galleryModal" class="gallery-modal">
+          <span class="close-modal">&times;</span>
+          <img class="modal-img" id="modalImg" />
+        </div>
+      </section>
+
+      <!-- Daftar Hadir -->
+      <section id="attendance">
+        <h2>Konfirmasi Kehadiran</h2>
+        <p style="text-align: center">
+          Mohon kesediyaannya untuk melakukan konfirmasi kehadiran, supaya kami
+          bisa mempersiapkan kehadiran anda dengan baik
+        </p>
+        <form id="attendanceForm">
+          <input
+            type="text"
+            id="attendeeName"
+            placeholder="Nama Anda"
+            required
+          />
+          <input
+            type="number"
+            id="attendeeCount"
+            placeholder="Jumlah Tamu"
+            required
+          />
+          <select id="attendanceStatus" required>
+            <option value="">Pilih Kehadiran</option>
+            <option value="Hadir">Hadir</option>
+            <option value="Tidak Hadir">Tidak Hadir</option>
+          </select>
+          <button type="submit">Kirim Konfirmasi</button>
+          <div id="attendanceSuccess">
+            Terima kasih! Konfirmasi Anda telah diterima.
+          </div>
+        </form>
+      </section>
+
+      <!--kirim hadiah-->
+      <section id="giftSection" class="section giftsection">
+        <h2 class="section-title">Wedding Gift</h2>
+        <p class="gift-desc">
+          Doa Restu Anda merupakan karunia yang sangat berarti bai kami. Dan
+          jika memberi adalah ungkapan tanda kasih Anda Anda dapat memberi kado
+          melalui:
+        </p>
+
+        <!-- Tombol Gift -->
+        <button id="giftBtn" class="gift-icon" title="Kirim Hadiah">
+          <ion-icon name="gift-outline"></ion-icon>
+          <span class="gift-label">Kirim Hadiah</span>
+        </button>
+
+        <!-- Popup Gift Modal -->
+        <div id="giftModal" class="gift-modal">
+          <div class="gift-modal-content">
+            <span class="close-modal">&times;</span>
+            <h3 class="modal-title">Kirim Hadiah</h3>
+
+            <div class="gift-card-wrapper">
+              <!-- Kartu BCA -->
+              <div class="gift-card atm-card bca">
+                <div class="card-inner">
+                  <div class="card-front">
+                    <img
+                      src="./assets/img/bri-logo.png"
+                      alt="BCA"
+                      class="bank-logo"
+                    />
+                    <p class="card-chip">💳</p>
+                    <p class="card-name">Agung Dwi Cahyono</p>
+                  </div>
+                  <div class="card-back">
+                    <p class="card-number">6102 0102 0724 531</p>
+                    <button class="copy-btn" data-rek="1234567890">
+                      Salin Nomor
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Kartu Mandiri -->
+            <div class="gift-card atm-card mandiri">
+              <div class="card-inner">
+                <div class="card-front">
+                  <img
+                    src="./assets/img/mybank.png"
+                    alt="Mandiri"
+                    class="bank-logo"
+                  />
+                  <p class="card-chip">💳</p>
+                  <p class="card-name">Nofita Hidayati</p>
+                </div>
+                <div class="card-back">
+                  <p class="card-number">1622 7295 8577</p>
+                  <button class="copy-btn" data-rek="9876543210">
+                    Salin Nomor
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="messages">
+        <h2>Friends Wishes</h2>
+        <form id="messageForm">
+          <input type="text" id="guestName" placeholder="Nama Anda" required />
+          <textarea
+            id="guestMessage"
+            placeholder="Tulis ucapan dan doa..."
+            required
+          ></textarea>
+          <button type="submit">Kirim Ucapan</button>
+          <div id="msgStatus">Terima kasih atas ucapan Anda 💖</div>
+        </form>
+        <div id="messageList"></div>
+      </section>
+
+      <!-- Kehormatan Section -->
+      <section id="honorSection" class="section" style="padding: 90px 20px">
+        <div class="honor-content fade-slide" data-aos="fade-up">
+          <h2 class="section-title" style="text-align: center">
+            Kehormatan & Kebahagiaan
+          </h2>
+          <p class="honor-text">
+            Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila
+            Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu kepada
+            kami.
+          </p>
+          <div class="divider-heart">
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/833/833472.png"
+              alt="heart"
+            />
+          </div>
+          <p class="thank-text">
+            Atas kehadiran dan doa restunya, kami ucapkan terima kasih yang
+            sebesar-besarnya.
+          </p>
+          <p class="signature">
+            Dengan penuh cinta,<br /><span>Agung & Nofita</span>
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const galleryItems = document.querySelectorAll(".gallery-item img");
+      const modal = document.getElementById("galleryModal");
+      const modalImg = document.getElementById("modalImg");
+      const closeModal = document.querySelector(".close-modal");
+
+      galleryItems.forEach((img) => {
+        img.addEventListener("click", () => {
+          modal.classList.add("active");
+          modalImg.src = img.src;
+        });
+      });
+
+      closeModal.addEventListener("click", () => {
+        modal.classList.remove("active");
+      });
+
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) {
+          modal.classList.remove("active");
+        }
+      });
+    </script>
+
+    <!-- GSAP -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"
+      defer
+    ></script>
+    <!-- ion icon -->
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+    <!-- swiper js -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+    <!-- aos -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"
+      defer
+    ></script>
+    <!--welcome screen-->
+    <script>
+      const slides = document.querySelectorAll(".cover-slider .slide");
+      let index = 0;
+
+      setInterval(() => {
+        slides[index].classList.remove("active");
+        index = (index + 1) % slides.length;
+        slides[index].classList.add("active");
+      }, 4000);
+    </script>
+
+    <!-- Bottom Navigation -->
+    <nav id="bottomNav" style="display: none">
+      <ul>
+        <li>
+          <a href="#header"
+            ><ion-icon name="home-outline"></ion-icon><span>Home</span></a
+          >
+        </li>
+        <li>
+          <a href="#coupleSection"
+            ><ion-icon name="heart-outline"></ion-icon><span>Couple</span></a
+          >
+        </li>
+        <li>
+          <a href="#gallerySection"
+            ><ion-icon name="images-outline"></ion-icon><span>Galeri</span></a
+          >
+        </li>
+        <li>
+          <a href="#giftSection"
+            ><ion-icon name="gift-outline"></ion-icon><span>Gift</span></a
+          >
+        </li>
+        <li>
+          <a href="#messages"
+            ><ion-icon name="chatbubble-ellipses-outline"></ion-icon
+            ><span>Wishes</span></a
+          >
+        </li>
+      </ul>
+    </nav>
+
+    <!--music-->
+    <audio id="bgMusic" src="./assets/music/wedding.mp3" loop></audio>
+    <!-- Tombol Musik -->
+    <div id="musicControl" class="music-btn" style="display: none">
+      <ion-icon name="pause-circle"></ion-icon>
+    </div>
+
+    <script>
+      const bgMusic = document.getElementById("bgMusic");
+      const musicControl = document.getElementById("musicControl");
+
+      // Musik diputar SAAT klik (tanpa delay)
+      document.querySelector(".buka_undangan").addEventListener("click", () => {
+        bgMusic
+          .play()
+          .then(() => {
+            console.log("Musik jalan");
+          })
+          .catch(() => {
+            console.log("Autoplay diblokir");
+          });
+
+        // delay hanya untuk tampilan tombol
+        setTimeout(() => {
+          musicControl.style.display = "flex";
+        }, 1500);
+      });
+
+      // Tombol play/pause
+      let isPlaying = true;
+      musicControl.addEventListener("click", () => {
+        if (isPlaying) {
+          bgMusic.pause();
+          musicControl.innerHTML = '<ion-icon name="play-circle"></ion-icon>';
+        } else {
+          bgMusic.play();
+          musicControl.innerHTML = '<ion-icon name="pause-circle"></ion-icon>';
+        }
+        isPlaying = !isPlaying;
+      });
+
+      // Countdown
+      const weddingDate = new Date("Mar 27, 2026 08:00:00").getTime();
+      const countdownElement = document.getElementById("countdownd");
+      const countdown = setInterval(() => {
+        const now = new Date().getTime();
+        const distance = weddingDate - now;
+        if (distance < 0) {
+          clearInterval(countdown);
+          countdownElement.innerHTML =
+            "<div class='timer'><p>Hari ini!</p></div>";
+          return;
+        }
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor(
+          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
+        );
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        countdownElement.querySelector(".hari").innerText = String(
+          days,
+        ).padStart(2, "0");
+        countdownElement.querySelector(".jam").innerText = String(
+          hours,
+        ).padStart(2, "0");
+        countdownElement.querySelector(".menit").innerText = String(
+          minutes,
+        ).padStart(2, "0");
+        countdownElement.querySelector(".detik").innerText = String(
+          seconds,
+        ).padStart(2, "0");
+      }, 1000);
+
+      // 🔖 Ambil nama tamu dari URL
+      const params = new URLSearchParams(window.location.search);
+      const guestName = params.get("to");
+
+      if (guestName) {
+        // Temukan elemen tamu di cover
+        const tamuContainer = document.querySelector(".tamu .text");
+
+        // Tambahkan nama tamu ke bawah teks Kepada Yth.
+        const guestLine = document.createElement("p");
+        guestLine.classList.add("guest-name");
+        guestLine.textContent = guestName;
+        tamuContainer.appendChild(guestLine);
+      }
+
+      // Open invitation
+      document.querySelector(".buka_undangan").addEventListener("click", () => {
+        const cover = document.getElementById("cover");
+        const main = document.getElementById("mainContent");
+        const bottomNav = document.getElementById("bottomNav");
+
+        gsap.to(cover, {
+          duration: 1,
+          opacity: 0,
+          onComplete: () => {
+            cover.style.display = "none";
+            main.style.display = "block";
+            gsap.from(main, { duration: 1, opacity: 0, y: 50 });
+            gsap.from(".couple-name", {
+              duration: 1,
+              opacity: 0,
+              y: 30,
+              stagger: 0.3,
+              delay: 1,
+            });
+            const couplePhoto = document.querySelector(".bg_mempelai");
+            if (couplePhoto) {
+              gsap.from(couplePhoto, {
+                duration: 1,
+                opacity: 0,
+                scale: 0.8,
+                delay: 1.5,
+              });
+            }
+            bottomNav.style.display = "flex";
+          },
+        });
+      });
+
+      // Smooth scroll + active nav highlight
+      // Ambil semua section dan link navigasi
+      const sections = document.querySelectorAll("section");
+      const navLinks = document.querySelectorAll("#bottomNav ul li a");
+
+      // === Scroll spy untuk deteksi aktif berdasarkan posisi scroll ===
+      window.addEventListener("scroll", () => {
+        let current = "";
+        const scrollY = window.pageYOffset;
+
+        sections.forEach((section) => {
+          const sectionTop = section.offsetTop - 120; // sensitivitas area aktif
+          const sectionHeight = section.offsetHeight;
+
+          if (
+            scrollY >= sectionTop &&
+            scrollY < sectionTop + sectionHeight - 80
+          ) {
+            current = section.getAttribute("id");
+          }
+        });
+
+        // fallback: kalau di paling atas, aktifkan Home
+        if (scrollY < 100) current = "home";
+
+        navLinks.forEach((link) => {
+          link.classList.remove("active");
+          if (link.getAttribute("href") === "#" + current) {
+            link.classList.add("active");
+          }
+        });
+      });
+
+      // === Klik event: scroll halus + highlight langsung aktif ===
+      navLinks.forEach((link) => {
+        link.addEventListener("click", (e) => {
+          e.preventDefault(); // cegah lompat langsung
+          const targetId = link.getAttribute("href").substring(1);
+          const targetSection = document.getElementById(targetId);
+
+          // Hapus semua highlight dulu
+          navLinks.forEach((l) => l.classList.remove("active"));
+          link.classList.add("active");
+
+          // Scroll halus ke section
+          if (targetSection) {
+            window.scrollTo({
+              top: targetSection.offsetTop - 80, // sedikit jarak biar pas
+              behavior: "smooth",
+            });
+          }
+
+          // Khusus Home, pastikan ke atas penuh
+          if (targetId === "home") {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }
+        });
+      });
+      // Initialize swiper
+      var swiper = new Swiper(".mySwiper", {
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        pagination: {
+          el: ".swiper-pagination",
+          dynamicBullets: true,
+        },
+        autoplay: {
+          delay: 2000,
+          disableOnInteraction: false,
+        },
+        loop: true,
+        grabCursor: true,
+        effect: "creative",
+        creativeEffect: {
+          prev: {
+            shadow: true,
+            translate: [0, 0, -400],
+          },
+          next: {
+            translate: ["100%", 0, 0],
+          },
+        },
+      });
+
+      // Gift Modal
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const giftBtn = document.getElementById("giftBtn");
+        const giftModal = document.getElementById("giftModal");
+        const closeModal = document.querySelector(".close-modal");
+
+        // Tutup modal jika klik di luar area
+        document.addEventListener("click", (e) => {
+          if (!giftModal.contains(e.target) && e.target !== giftBtn) {
+            giftModal.classList.remove("show");
+          }
+        });
+
+        // Tutup manual via tombol close
+        closeModal.addEventListener("click", (e) => {
+          e.stopPropagation();
+          giftModal.classList.remove("show");
+        });
+
+        // 💳 Efek flip kartu
+        document.querySelectorAll(".atm-card").forEach((card) => {
+          card.addEventListener("click", () => {
+            card.classList.toggle("flipped");
+          });
+        });
+
+        // 📋 Salin nomor rekening
+        document.querySelectorAll(".copy-btn").forEach((btn) => {
+          btn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            const rek = btn.dataset.rek;
+            navigator.clipboard.writeText(rek);
+            btn.textContent = "Disalin!";
+            setTimeout(() => (btn.textContent = "Salin Nomor"), 2000);
+          });
+        });
+      });
+    </script>
+    <!-- 🔥 Firebase Script -->
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+      import {
+        getDatabase,
+        ref,
+        push,
+        set,
+        onValue,
+      } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+
+      // Konfigurasi Firebase
+      const firebaseConfig = {
+        apiKey: "AIzaSyAeiZvgS_38kFl0xeqVgMP-Yidts7QCnHk",
+        authDomain: "agung-nofita-424a3.firebaseapp.com",
+        databaseURL: "https://agung-nofita-424a3-default-rtdb.firebaseio.com",
+        projectId: "agung-nofita-424a3",
+        storageBucket: "agung-nofita-424a3.firebasestorage.app",
+        messagingSenderId: "981786734105",
+        appId: "1:981786734105:web:4bc3a0638d564d59880488",
+      };
+
+      // Inisialisasi Firebase
+      const app = initializeApp(firebaseConfig);
+      const db = getDatabase(app);
+
+      // 🎉 Attendance Form
+      const attendanceForm = document.getElementById("attendanceForm");
+      const attendanceSuccess = document.getElementById("attendanceSuccess");
+
+      attendanceForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const name = document.getElementById("attendeeName").value.trim();
+        const count = document.getElementById("attendeeCount").value.trim();
+        const status = document.getElementById("attendanceStatus").value;
+
+        if (!name || !count || !status)
+          return alert("Mohon lengkapi semua kolom!");
+
+        const newRef = push(ref(db, "attendance"));
+        set(newRef, {
+          name,
+          count,
+          status,
+          time: new Date().toISOString(),
+        }).then(() => {
+          attendanceSuccess.style.display = "block";
+          attendanceForm.reset();
+          setTimeout(() => (attendanceSuccess.style.display = "none"), 3000);
+        });
+      });
+
+      // 💌 Ucapan & Doa Form
+      const messageForm = document.getElementById("messageForm");
+      const msgStatus = document.getElementById("msgStatus");
+      const msgList = document.getElementById("messageList");
+
+      messageForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const name = document.getElementById("guestName").value.trim();
+        const message = document.getElementById("guestMessage").value.trim();
+        if (!name || !message) return alert("Nama dan pesan harus diisi!");
+
+        const newMsgRef = push(ref(db, "ucapan"));
+        set(newMsgRef, {
+          name,
+          message,
+          time: new Date().toISOString(),
+        }).then(() => {
+          msgStatus.style.display = "block";
+          messageForm.reset();
+          setTimeout(() => (msgStatus.style.display = "none"), 3000);
+        });
+      });
+
+      // 🕊️ Realtime load ucapan (fitur lihat semua + sembunyikan)
+      onValue(ref(db, "ucapan"), (snapshot) => {
+        const data = snapshot.val();
+        msgList.innerHTML = "";
+
+        if (data) {
+          const allMessages = Object.values(data).sort(
+            (a, b) => new Date(b.time) - new Date(a.time),
+          ); // urut terbaru
+
+          let showingAll = false; // status tampilan
+          const renderMessages = () => {
+            msgList.innerHTML = "";
+
+            // kalau showingAll true → tampilkan 20, kalau false → tampilkan 5
+            const limit = showingAll ? 20 : 5;
+            const messages = allMessages.slice(0, limit);
+
+            messages.forEach(({ name, message, time }) => {
+              const div = document.createElement("div");
+              div.classList.add("message-item");
+
+              const localTime = new Date(time).toLocaleString("id-ID", {
+                dateStyle: "short",
+                timeStyle: "short",
+              });
+
+              div.innerHTML = `
+                <strong>${name}</strong>
+                <span class="msg-time">🕒 ${localTime}</span>
+                <p>${message}</p>
+              `;
+              msgList.appendChild(div);
+            });
+
+            // jika jumlah pesan > 5 → tampilkan tombol lihat semua / sembunyikan
+            if (allMessages.length > 5) {
+              const toggleBtn = document.createElement("button");
+              toggleBtn.textContent = showingAll
+                ? "Sembunyikan Ucapan "
+                : "Lihat Semua Ucapan ";
+              toggleBtn.classList.add("see-all-btn");
+
+              toggleBtn.addEventListener("click", () => {
+                showingAll = !showingAll;
+                renderMessages(); // render ulang sesuai status
+              });
+
+              msgList.appendChild(toggleBtn);
+            }
+          };
+
+          // render awal (hanya 5 ucapan)
+          renderMessages();
+        }
+      });
+
+      const giftBtn = document.getElementById("giftBtn");
+      const giftModal = document.getElementById("giftModal");
+
+      giftBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+
+        if (giftModal.classList.contains("show")) {
+          // Slide Up
+          giftModal.classList.remove("show");
+          giftModal.style.maxHeight = giftModal.scrollHeight + "px"; // set current height
+          requestAnimationFrame(() => {
+            giftModal.classList.add("closing");
+            giftModal.style.maxHeight = "0";
+            giftModal.style.opacity = "0";
+          });
+
+          giftModal.addEventListener("transitionend", function handler() {
+            giftModal.classList.remove("closing");
+            giftModal.style.maxHeight = "";
+            giftModal.removeEventListener("transitionend", handler);
+          });
+        } else {
+          // Slide Down
+          giftModal.classList.add("show");
+          giftModal.classList.add("opening");
+          giftModal.style.maxHeight = "0";
+          giftModal.style.opacity = "0";
+
+          requestAnimationFrame(() => {
+            const scrollHeight = giftModal.scrollHeight;
+            giftModal.style.maxHeight = scrollHeight + "px";
+            giftModal.style.opacity = "1";
+          });
+
+          giftModal.addEventListener("transitionend", function handler() {
+            giftModal.classList.remove("opening");
+            giftModal.style.maxHeight = ""; // reset to auto
+            giftModal.removeEventListener("transitionend", handler);
+          });
+        }
+      });
+      AOS.init({ duration: 1200, once: true, offset: 150 });
+    </script>
+  </body>
+</html>
