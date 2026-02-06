@@ -693,7 +693,7 @@ main {
 #gallerySection {
   width: 100%;
   padding: 90px 20px;
-  background-image: url("./assets/img/background.png");
+  background-image: url("../../assets/img/background.png");
   background-repeat: no-repeat;
   background-position: center top;
   background-size: 240px;
@@ -1478,6 +1478,7 @@ img {
 .gallery-item img:hover {
   transform: scale(1.05);
 }
+
 
 
 
