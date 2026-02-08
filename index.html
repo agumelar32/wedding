@@ -565,38 +565,41 @@
     </div>
 
     <script>
-      const bgMusic = document.getElementById("bgMusic");
-      const musicControl = document.getElementById("musicControl");
+  const bgMusic = document.getElementById("bgMusic");
+  const musicControl = document.getElementById("musicControl");
+  const bukaBtn = document.querySelector(".buka_undangan");
 
-      // Musik diputar SAAT klik (tanpa delay)
-      document.querySelector(".buka_undangan").addEventListener("click", () => {
-        bgMusic
-          .play()
-          .then(() => {
-            console.log("Musik jalan");
-          })
-          .catch(() => {
-            console.log("Autoplay diblokir");
-          });
+  let isPlaying = false;
 
-        // delay hanya untuk tampilan tombol
-        setTimeout(() => {
-          musicControl.style.display = "flex";
-        }, 1500);
+  // WAJIB: play di dalam event klik user
+  bukaBtn.addEventListener("click", () => {
+    bgMusic.volume = 0.7; // opsional
+    bgMusic
+      .play()
+      .then(() => {
+        isPlaying = true;
+        musicControl.innerHTML =
+          '<ion-icon name="pause-circle"></ion-icon>';
+        musicControl.style.display = "flex";
+      })
+      .catch((err) => {
+        console.log("Autoplay diblokir:", err);
       });
+  });
 
-      // Tombol play/pause
-      let isPlaying = true;
-      musicControl.addEventListener("click", () => {
-        if (isPlaying) {
-          bgMusic.pause();
-          musicControl.innerHTML = '<ion-icon name="play-circle"></ion-icon>';
-        } else {
-          bgMusic.play();
-          musicControl.innerHTML = '<ion-icon name="pause-circle"></ion-icon>';
-        }
-        isPlaying = !isPlaying;
-      });
+  // Tombol Play / Pause
+  musicControl.addEventListener("click", () => {
+    if (isPlaying) {
+      bgMusic.pause();
+      musicControl.innerHTML =
+        '<ion-icon name="play-circle"></ion-icon>';
+    } else {
+      bgMusic.play();
+      musicControl.innerHTML =
+        '<ion-icon name="pause-circle"></ion-icon>';
+    }
+    isPlaying = !isPlaying;
+  });
 
       // Countdown
       const weddingDate = new Date("Mar 27, 2026 10:00:00").getTime();
@@ -961,4 +964,5 @@
     </script>
   </body>
 </html>
+
 
