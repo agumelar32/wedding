@@ -39,13 +39,7 @@ if (tombolBuka) {
       clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0)",
     });
 
-    if (music && !musicPlayed) {
-  music.volume = 0.7;
-  music.play().then(() => {
-    musicPlayed = true;
-    console.log("Music started");
-  }).catch(err => {
-    console.log("Music blocked:", err);
+    if (music) music.play();
   });
 }
 
@@ -163,4 +157,3 @@ window.addEventListener("load", () => {
     },
   });
 });
-
