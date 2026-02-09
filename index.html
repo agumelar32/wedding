@@ -393,7 +393,7 @@
                   </div>
                   <div class="card-back">
                     <p class="card-number">6102 0102 0724 531</p>
-                    <button class="copy-btn" data-rek="610201020724531">
+                    <button class="copy-btn" data-rek="1234567890">
                       Salin Nomor
                     </button>
                   </div>
@@ -414,7 +414,7 @@
                 </div>
                 <div class="card-back">
                   <p class="card-number">1622 7295 8577</p>
-                  <button class="copy-btn" data-rek="162272958577">
+                  <button class="copy-btn" data-rek="9876543210">
                     Salin Nomor
                   </button>
                 </div>
@@ -557,12 +557,13 @@
       </ul>
     </nav>
 
-      <!--music-->
+    <!--music-->
     <audio
       id="bgMusic"
       src="./assets/music/wedding.mp3"
       loop
-      preload="none"
+      preload="auto"
+      playsinline
     ></audio>
 
     <!-- Tombol Musik -->
@@ -570,6 +571,39 @@
       <ion-icon name="pause-circle"></ion-icon>
     </div>
     <script>
+      const bgMusic = document.getElementById("bgMusic");
+      const musicControl = document.getElementById("musicControl");
+      const bukaBtn = document.querySelector(".buka_undangan");
+
+      let isPlaying = false;
+
+      // WAJIB: play di dalam event klik user
+      bukaBtn.addEventListener("click", () => {
+        bgMusic.volume = 0.7; // opsional
+        bgMusic
+          .play()
+          .then(() => {
+            isPlaying = true;
+            musicControl.innerHTML =
+              '<ion-icon name="pause-circle"></ion-icon>';
+            musicControl.style.display = "flex";
+          })
+          .catch((err) => {
+            console.log("Autoplay diblokir:", err);
+          });
+      });
+
+      // Tombol Play / Pause
+      musicControl.addEventListener("click", () => {
+        if (isPlaying) {
+          bgMusic.pause();
+          musicControl.innerHTML = '<ion-icon name="play-circle"></ion-icon>';
+        } else {
+          bgMusic.play();
+          musicControl.innerHTML = '<ion-icon name="pause-circle"></ion-icon>';
+        }
+        isPlaying = !isPlaying;
+      });
 
       // Countdown
       const weddingDate = new Date("Mar 27, 2026 10:00:00").getTime();
@@ -624,25 +658,20 @@
         const main = document.getElementById("mainContent");
         const bottomNav = document.getElementById("bottomNav");
 
-        const bgMusic = document.getElementById("bgMusic");
-        const musicControl = document.getElementById("musicControl");
-      
-        bgMusic.volume = 0.7;
-        bgMusic.play().then(() => {
-          musicControl.style.display = "flex";
-        });
-      
         gsap.to(cover, {
           duration: 1,
           opacity: 0,
           onComplete: () => {
             cover.style.display = "none";
             main.style.display = "block";
-            bottomNav.style.display = "flex";
-          },
-        });
-      });
-
+            gsap.from(main, { duration: 1, opacity: 0, y: 50 });
+            gsap.from(".couple-name", {
+              duration: 1,
+              opacity: 0,
+              y: 30,
+              stagger: 0.3,
+              delay: 1,
+            });
             const couplePhoto = document.querySelector(".bg_mempelai");
             if (couplePhoto) {
               gsap.from(couplePhoto, {
@@ -660,6 +689,18 @@
       // Smooth scroll + active nav highlight
       // Ambil semua section dan link navigasi
       const sections = document.querySelectorAll("section");
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("show");
+            }
+          });
+        },
+        { threshold: 0.2 },
+      );
+
+      sections.forEach((sec) => observer.observe(sec));
       const navLinks = document.querySelectorAll("#bottomNav ul li a");
 
       // === Scroll spy untuk deteksi aktif berdasarkan posisi scroll ===
@@ -939,11 +980,3 @@
     </script>
   </body>
 </html>
-
-
-
-
-
-
-
-
