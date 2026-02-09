@@ -7,27 +7,53 @@ const urlParams = new URLSearchParams(window.location.search);
 const namaTamu = urlParams.get("kepada") || "Tamu Spesial";
 const spanTamu = document.querySelector(".nama_url");
 
-// Tampilkan nama tamu
 if (spanTamu) spanTamu.textContent = namaTamu;
 
-// Tambahkan meta description dinamis
+// Meta description dinamis
 const meta = document.createElement("meta");
 meta.name = "description";
 meta.content = `Kepada yang Terhormat ${namaTamu}`;
 document.head.appendChild(meta);
 
 // ==============================
-// Animasi Pembuka (GSAP)
+// ELEMENT GLOBAL
 // ==============================
 const tombolBuka = document.querySelector(".tombol");
+const bukaUndangan = document.querySelector(".buka_undangan");
 const music = document.getElementById("bgMusic");
 const bottomNav = document.getElementById("bottomNav");
 
+let musicStarted = false;
+
+// ==============================
+// PLAY MUSIC (HANYA SEKALI & AMAN)
+// ==============================
+function startMusic() {
+  if (!music || musicStarted) return;
+
+  music.muted = true;
+  music.volume = 0.7;
+
+  music
+    .play()
+    .then(() => {
+      music.muted = false;
+      musicStarted = true;
+    })
+    .catch((err) => console.log("Music blocked:", err));
+}
+
+// ==============================
+// Animasi Pembuka (TOMBOL PERTAMA)
+// ==============================
 if (tombolBuka) {
   tombolBuka.addEventListener("click", () => {
-    const cover = document.querySelector("#cover");
+    const cover = document.getElementById("cover");
     const main = document.getElementById("home");
     const staggerElements = document.querySelectorAll(".stagger_animation");
+
+    // PLAY MUSIC DI SINI (GESTURE PERTAMA)
+    startMusic();
 
     cover.classList.add("active");
     main.classList.add("show");
@@ -38,16 +64,12 @@ if (tombolBuka) {
       stagger: 0.3,
       clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0)",
     });
-
-    if (music) music.play();
   });
 }
 
 // ==============================
 // Buka Undangan (Fade Out Cover)
 // ==============================
-const bukaUndangan = document.querySelector(".buka_undangan");
-
 if (bukaUndangan) {
   bukaUndangan.addEventListener("click", () => {
     const cover = document.getElementById("cover");
@@ -60,9 +82,13 @@ if (bukaUndangan) {
         cover.style.display = "none";
         mainContent.style.display = "block";
 
-        gsap.from(mainContent, { duration: 1, opacity: 0, y: 50 });
+        gsap.from(mainContent, {
+          duration: 1,
+          opacity: 0,
+          y: 50,
+        });
+
         if (bottomNav) bottomNav.style.display = "flex";
-        if (music) music.play();
       },
     });
   });
@@ -90,9 +116,10 @@ const sections = document.querySelectorAll(
 
 window.addEventListener("scroll", () => {
   let current = "";
+
   sections.forEach((section) => {
     const sectionTop = section.offsetTop;
-    if (pageYOffset >= sectionTop - 100) {
+    if (pageYOffset >= sectionTop - 120) {
       current = section.getAttribute("id");
     }
   });
@@ -117,7 +144,6 @@ const detik = document.querySelector(".detik");
 setInterval(() => {
   const now = new Date().getTime();
   const distance = targetDate - now;
-
   if (distance <= 0) return;
 
   const days = Math.floor(distance / (1000 * 60 * 60 * 24));
@@ -134,12 +160,11 @@ setInterval(() => {
 }, 1000);
 
 // ==============================
-// Inisialisasi Swiper Gallery
+// Swiper Gallery
 // ==============================
 window.addEventListener("load", () => {
   new Swiper(".gallery-swiper", {
     slidesPerView: 1,
-    spaceBetween: 0,
     loop: true,
     effect: "fade",
     speed: 800,
