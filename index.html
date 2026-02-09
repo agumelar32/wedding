@@ -571,39 +571,57 @@
       <ion-icon name="pause-circle"></ion-icon>
     </div>
     <script>
-      const bgMusic = document.getElementById("bgMusic");
-      const musicControl = document.getElementById("musicControl");
-      const bukaBtn = document.querySelector(".buka_undangan");
+  const bgMusic = document.getElementById("bgMusic");
+  const musicControl = document.getElementById("musicControl");
+  const bukaBtn = document.querySelector(".buka_undangan");
 
-      let isPlaying = false;
+  let isPlaying = false;
 
-      // WAJIB: play di dalam event klik user
-      bukaBtn.addEventListener("click", () => {
-        bgMusic.volume = 0.7; // opsional
-        bgMusic
-          .play()
-          .then(() => {
-            isPlaying = true;
-            musicControl.innerHTML =
-              '<ion-icon name="pause-circle"></ion-icon>';
-            musicControl.style.display = "flex";
-          })
-          .catch((err) => {
-            console.log("Autoplay diblokir:", err);
-          });
-      });
+  bukaBtn.addEventListener("click", () => {
+    /* === AUDIO HARUS PALING AWAL === */
+    bgMusic.muted = true;
+    bgMusic.volume = 0.7;
 
-      // Tombol Play / Pause
-      musicControl.addEventListener("click", () => {
-        if (isPlaying) {
-          bgMusic.pause();
-          musicControl.innerHTML = '<ion-icon name="play-circle"></ion-icon>';
-        } else {
-          bgMusic.play();
-          musicControl.innerHTML = '<ion-icon name="pause-circle"></ion-icon>';
-        }
-        isPlaying = !isPlaying;
-      });
+    bgMusic.play().then(() => {
+      bgMusic.muted = false;
+      isPlaying = true;
+      musicControl.style.display = "flex";
+      musicControl.innerHTML =
+        '<ion-icon name="pause-circle"></ion-icon>';
+    }).catch(err => {
+      console.log("Audio gagal:", err);
+    });
+
+    /* === BARU OPEN INVITATION === */
+    const cover = document.getElementById("cover");
+    const main = document.getElementById("mainContent");
+    const bottomNav = document.getElementById("bottomNav");
+
+    gsap.to(cover, {
+      duration: 1,
+      opacity: 0,
+      onComplete: () => {
+        cover.style.display = "none";
+        main.style.display = "block";
+        bottomNav.style.display = "flex";
+        gsap.from(main, { duration: 1, opacity: 0, y: 50 });
+      },
+    });
+  });
+
+  /* TOGGLE MUSIC */
+  musicControl.addEventListener("click", () => {
+    if (isPlaying) {
+      bgMusic.pause();
+      musicControl.innerHTML =
+        '<ion-icon name="play-circle"></ion-icon>';
+    } else {
+      bgMusic.play();
+      musicControl.innerHTML =
+        '<ion-icon name="pause-circle"></ion-icon>';
+    }
+    isPlaying = !isPlaying;
+  });
       // Countdown
       const weddingDate = new Date("Mar 27, 2026 10:00:00").getTime();
       const countdownElement = document.getElementById("countdownd");
@@ -967,6 +985,7 @@
     </script>
   </body>
 </html>
+
 
 
 
